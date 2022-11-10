@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import LineChart from './components/LineChart/LineChart'
-import { data, data2, data3 } from "./components/LineChart/js/request"
+import BarChart from './components/BarChart/BarChart'
+import { data } from "./components/BarChart/js/request"
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <LineChart data={data}/>
+    { <BarChart data={data}/> }
   </React.StrictMode>
 )

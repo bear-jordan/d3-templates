@@ -6,10 +6,11 @@ import * as d3 from "d3"
 import { config } from "./js/config"
 import { update } from './js/update'
 
-// User Styles
-import './LineChart.css'
+// Styles
+import './BarChart.css'
 
-function LineChart({ data }) {
+
+function BarChart({ data }) {
   const svgRef = useRef()
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function LineChart({ data }) {
     <>
       <svg height={config.box_height} width={config.box_width} ref={svgRef}>
         <g className="figure">
-          <g className="paths"></g>
+          <g className="bars"></g>
           <g className="x-axis"></g>
           <g className="y-axis"></g>
         </g>
@@ -30,4 +31,4 @@ function LineChart({ data }) {
   )
 }
 
-export default LineChart
+export default BarChart
