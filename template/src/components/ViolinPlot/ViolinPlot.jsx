@@ -21,7 +21,7 @@ function ViolinPlot({ data }) {
     <>
       <svg height={config.box_height} width={config.box_width} ref={svgRef}>
         <g className="figure">
-          <g className="violin"></g>
+          <g className="violins"></g>
           <g className="x-axis"></g>
           <g className="y-axis"></g>
         </g>
