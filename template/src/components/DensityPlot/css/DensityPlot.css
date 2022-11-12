@@ -1,0 +1,9 @@
+svg {
+    border: 1px black solid;
+}
+
+.paths {
+    fill: #abc;
+    stroke: black;
+    stroke-width: 1px;
+}

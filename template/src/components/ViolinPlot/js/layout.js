@@ -18,7 +18,7 @@ export function layout(data) {
 
     const layoutAxis = d3.axisBottom(layoutScale)
     
-        const xScale = d3.scaleLinear()
+    const xScale = d3.scaleLinear()
         .domain([-1*getMaxX(data), getMaxX(data)])
         .range([0, layoutScale.bandwidth()])
 

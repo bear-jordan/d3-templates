@@ -28,10 +28,6 @@ function updateGroup(d, i) {
 
     const figureData = d.data
 
-    console.log(figureData.map(d => d.x0))
-    console.log(figureData.map(d => d.x1))
-    console.log(figureData.map(d => d.y))
-
     g.append("path")
         .data([figureData])
         .attr("d", area)
@@ -57,9 +53,7 @@ function updateChart(svg, data) {
 export function update(svg, data) {
     const chartEmpty = svg.select(".violins").selectAll("*").empty()
     if (chartEmpty) { initializeChart(svg) }
-    updateChart(svg, data)
-
-
-    // updateChart(svg, data)
+    
+    updateChart(svg, data,)
 }
 
