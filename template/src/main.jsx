@@ -1,11 +1,17 @@
+// Modules
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import DensityPlot from './components/DensityPlot/DensityPlot'
-import { data } from './components/DensityPlot/js/request'
+
+// User Modules
+import { data } from './components/ScatterPlot/js/request'
+import ScatterPlot from './components/ScatterPlot/ScatterPlot'
+
+// CSS
 import './index.css'
+import "./components/ScatterPlot/ScatterPlot.css"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    { <DensityPlot passed_data={ data } /> }
+    { <ScatterPlot passed_data={ data } /> }
   </React.StrictMode>
 )
