@@ -5,7 +5,7 @@ import * as d3 from "d3"
 
 // User Modules
 import { default_data } from './assets/data/default_data'
-import DivergingBar from './components/deviation/DivergingBar/DivergingBar'
+import DivergingStackedBar from './components/deviation/DivergingStackedBar/DivergingStackedBar'
 
 export default function App() {
     const [data, updateData] = useState(default_data)
@@ -29,6 +29,6 @@ export default function App() {
     }, [])   
 
     return (
-        <DivergingBar data={data} />
+        <DivergingStackedBar data={data} />
     )
 }
