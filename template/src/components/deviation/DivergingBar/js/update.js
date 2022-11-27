@@ -22,16 +22,24 @@ function initializeFigure(svg) {
         .attr("transform", "translate(0,0)")
 }
 
-function updateBars(svg, layoutData) {
-    svg.select(".bars")
-        .selectAll(".bar")
-        .data(layoutData)
-        .join("rect")
-        .attr("x", d => d.x)
-        .attr("y", d => d.y)
-        .attr("height", d => d.height)
-        .attr("width", d => d.width)
+function initializeGroup(g, d) {
+    g.append("rect")
         .classed("bar", true)
+    
+    g.append("text")
+        .classed("label", true)
+}
+
+
+function updateBars(d) {
+    let g = d3.select(this)
+    g.attr("transform", "translate("+d.x+","+d.y+")")
+
+    if(g.selectAll("*").empty()){initializeGroup(g, d)}
+    
+    g.select(".bar")
+        .attr("height", d.height)
+        .attr("width", d.width)
 }
 
 function updateAxes(svg, xAxis, yAxis) {
@@ -42,6 +50,14 @@ function updateAxes(svg, xAxis, yAxis) {
         .call(yAxis)
 }
 
+function updateChart(svg, layoutData) {
+    svg.select(".bars")
+        .selectAll("g")
+        .data(layoutData)
+        .join("g")
+        .each(updateBars)
+}
+
 function update(svg, clean_data) {
     console.log("update")
 
@@ -49,7 +65,7 @@ function update(svg, clean_data) {
     if(isEmpty){initializeFigure(svg)}
 
     const [layoutData, xAxis, yAxis] = layout(clean_data)
-    updateBars(svg, layoutData)
+    updateChart(svg, layoutData)
     updateAxes(svg, xAxis, yAxis)
 }
 

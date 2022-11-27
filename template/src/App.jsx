@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import * as d3 from "d3"
 
 // User Modules
-import { default_data } from './components/JitterPlot/js/request'
+import { default_data } from './assets/data/default_data'
 import DivergingBar from './components/deviation/DivergingBar/DivergingBar'
 
 export default function App() {
