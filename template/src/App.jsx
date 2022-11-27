@@ -5,13 +5,10 @@ import * as d3 from "d3"
 
 // User Modules
 import { default_data } from './components/JitterPlot/js/request'
-import JitterPlot from './components/JitterPlot/JitterPlot'
-
-// CSS
-import "./components/JitterPlot/css/JitterPlot.css"
+import DivergingBar from './components/deviation/DivergingBar/DivergingBar'
 
 export default function App() {
-    const [passed_data, updatePassedData] = useState(default_data)
+    const [data, updateData] = useState(default_data)
 
     useEffect(() => {
         d3.csv("/src/assets/data/penguins.csv", (d) => {
@@ -26,11 +23,12 @@ export default function App() {
                 year: +d.year
             }
         }).then((d) => {
-            updatePassedData(d)
+            console.log("data loaded")
+            updateData(d)
         })
-    }, [])
-    
+    }, [])   
+
     return (
-        <JitterPlot passed_data={passed_data}/>
+        <DivergingBar data={data} />
     )
 }

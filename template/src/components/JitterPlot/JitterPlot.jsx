@@ -9,19 +9,17 @@ import { update } from "./js/update"
 // CSS
 import "./css/JitterPlot.css"
 
-export default function JitterPlot({ passed_data }) {
+export default function JitterPlot({ data }) {
     console.log("JitterPlot")
+    console.log(data)
     const svgRef = useRef()
-    const [data, updateData] = useState(passed_data)
 
     useEffect(() => {
         console.log("use effect")
         const svg = d3.select(svgRef.current)
-        updateData(passed_data)
-        console.log(data)
-
+        
         update(svg, data)
-    }, [passed_data])
+    }, [data])
 
     return (
         <svg ref={svgRef} height={config.box_height} width={config.box_width}>
