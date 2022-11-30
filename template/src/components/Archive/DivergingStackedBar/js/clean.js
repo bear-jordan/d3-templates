@@ -22,12 +22,11 @@ function cleanCounts(counts, island) {
 }
 
 function clean(data) {
-    console.log("cleaning")
 
     const filtered_data = data.filter(row => !isNaN(row.bill_length_mm))
     const counts = d3.flatRollup(filtered_data, v => v.length, d => d.island, d => d.species, d => d.sex)
 
-    console.log(["Torgersen", "Biscoe", "Dream"].map(island => cleanCounts(counts, island)))
+    return ["Torgersen", "Biscoe", "Dream"].map(island => cleanCounts(counts, island))
 }
 
 export { clean }

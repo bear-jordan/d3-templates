@@ -7,7 +7,6 @@ import { layout } from "./layout"
 
 
 function initializeFigure(svg) {
-    console.log("init")
 
     svg.select(".figure")
         .attr("transform", "translate("+config.margin.left+","+config.margin.top+")")
@@ -23,6 +22,7 @@ function initializeFigure(svg) {
 }
 
 function initializeGroup(g, d) {
+
     g.append("rect")
         .classed("bar", true)
     
@@ -32,14 +32,20 @@ function initializeGroup(g, d) {
 
 
 function updateBars(d) {
-    let g = d3.select(this)
-    g.attr("transform", "translate("+d.x+","+d.y+")")
 
-    if(g.selectAll("*").empty()){initializeGroup(g, d)}
-    
-    g.select(".bar")
-        .attr("height", d.height)
-        .attr("width", d.width)
+    if(!d.label[0].includes("female")){
+        let g = d3.select(this)
+        g.attr("transform", "translate("+d.x+","+d.y+")")
+
+        if(g.selectAll("*").empty()){initializeGroup(g, d)}
+        
+        g.select(".bar")
+            .attr("height", d.height)
+            .attr("width", d.width)
+
+        g.select(".label")
+            .text(d.label[0])
+    }
 }
 
 function updateAxes(svg, xAxis, yAxis) {
@@ -59,7 +65,6 @@ function updateChart(svg, layoutData) {
 }
 
 function update(svg, clean_data) {
-    console.log("update")
 
     const isEmpty = svg.select(".x-axis *").empty()
     if(isEmpty){initializeFigure(svg)}
